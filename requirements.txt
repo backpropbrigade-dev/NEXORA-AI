@@ -1,0 +1,13 @@
+groq
+python-dotenv
+pyttsx3
+SpeechRecognition
+PyAudio
+playwright
+fastapi
+uvicorn
+websockets>=12,<16
+pymongo
+pwdlib[argon2]
+PyJWT
+email-validator

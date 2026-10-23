@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: nexora-ai-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-render.txt
+    startCommand: uvicorn api.public_server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: PUBLIC_FRONTEND_ORIGINS
+        value: https://nexora-ai-two-smoky.vercel.app
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DATABASE
+        value: nexora
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: JWT_ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAMESITE
+        value: none
